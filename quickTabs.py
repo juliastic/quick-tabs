@@ -1,4 +1,4 @@
-import webbrowser, time, sys, argparse, os
+import webbrowser, time, sys, argparse, os, re
 
 parser = argparse.ArgumentParser()    
 parser.add_argument('file')
@@ -10,7 +10,12 @@ if os.stat(file).st_size == 0:
 
 with open(file) as url_file:
     urls = [line.strip() for line in url_file]
-webbrowser.open(urls[0])
-time.sleep(1)
-for url in urls[1:]:
-    webbrowser.open_new_tab(url)
+
+urls = [url for url in urls]
+for url in urls:
+	try:
+		url = re.search("(?P<url>https?://[^\s]+)", url).group("url")
+		webbrowser.open_new_tab(url)
+		time.sleep(1)
+	except:
+		pass
