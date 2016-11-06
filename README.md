@@ -1,1 +1,1 @@
-Simple script to open multiple YouTube links from a file
+Simple script to open multiple links from a file

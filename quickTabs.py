@@ -14,5 +14,3 @@ webbrowser.open(urls[0])
 time.sleep(1)
 for url in urls[1:]:
     webbrowser.open_new_tab(url)
-
-file.close()
